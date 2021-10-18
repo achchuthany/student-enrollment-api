@@ -73,7 +73,7 @@ app.use(
     delayMs: 500,
   })
 );
-// Routes
+// Routes Of
 app.options("/*", (req, res) => {
   // Return CORS headers
   res.cors().send({});
