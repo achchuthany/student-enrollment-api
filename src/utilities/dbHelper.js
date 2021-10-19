@@ -1,6 +1,6 @@
 /* eslint-disable no-irregular-whitespace */
 const { Sequelize } = require("sequelize");
-const dotenv = require("dotenv-flow");
+const dotenv = require("dotenv-flow").config();
 const cls = require("cls-hooked");
 
 const Logger = require("./loggingHelper");
@@ -12,19 +12,24 @@ if (process.env.NODE_ENV === "test") {
   Sequelize.useCLS(namespace);
 }
 
-const sequelize = new Sequelize("student_enrollment_api", "root", "!2qwasZX", {
-  host: "localhost",
-  port: "3306",
-  dialect: "mariadb",
-  logging:
-    process.env.NODE_ENV === "test"
-      ? false
-      : (message) => Logger.log("debug", message), // test to not to show the transaction log
-  pool: {
-    max: 10,
-    min: 0,
-  },
-});
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USERNAME,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT,
+    dialect: "mariadb",
+    logging:
+      process.env.NODE_ENV === "test"
+        ? false
+        : (message) => Logger.log("debug", message), // test to not to show the transaction log
+    pool: {
+      max: 10,
+      min: 0,
+    },
+  }
+);
 
 // Show DB Status
 (async () => {

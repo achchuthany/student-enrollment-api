@@ -1,9 +1,9 @@
 module.exports = {
   development: {
-    username: "root",
-    password: "!2qwasZX",
-    database: "student_enrollment_api",
-    host: "localhost",
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
     dialect: "mariadb",
   },
   test: {
