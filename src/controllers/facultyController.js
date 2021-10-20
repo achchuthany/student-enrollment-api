@@ -1,9 +1,8 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-restricted-syntax */
-const controller = require("../controller");
+const controller = require("./controller");
 const facultyValidator = require("../validators/facultyValidator");
 const facultyService = require("../services/facultyService");
-const { defaultResolve } = require("../utilities/responseHelper");
 const Logger = require("../utilities/loggingHelper");
 const { flushCacheDb } = require("../utilities/cacheHelper");
 

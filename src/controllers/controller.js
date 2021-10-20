@@ -1,4 +1,4 @@
-const { defaultResolve, defaultReject } = require("./utilities/responseHelper");
+const { defaultResolve, defaultReject } = require("../utilities/responseHelper");
 
 const controller = async (req, res, params) => {
   // If there is no special responses to give, it will use the default response and reject

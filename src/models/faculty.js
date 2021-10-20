@@ -33,5 +33,8 @@ const Faculty = db.define(
   },
   {}
 );
+Faculty.toJSON = () => {
+  return { ...this.get(), id: undefined };
+};
 
 module.exports = Faculty;

@@ -11,7 +11,7 @@ const swaggerUI = require("swagger-ui-express");
 
 const cacheMW = require("./middlewares/checkCacheHit");
 
-const facultyRouter = require("./routes/faculty");
+const indexRouter = require("./routes/index");
 const ErrorHelper = require("./utilities/errorHelper");
 
 const app = express();
@@ -79,13 +79,13 @@ app.options("/*", (req, res) => {
   res.cors().send({});
 });
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
-app.use("/", facultyRouter);
+app.use("/", indexRouter);
 // handling unmatched routes
-app.use(
-  (req, res) =>
-    ErrorHelper({
-      message: `Cannot find ${req.method} endpoint for ${req.path}`,
-      statusCode: 404,
-    }).payload
-);
+// app.use(
+//   (req, res) =>
+//     ErrorHelper({
+//       message: `Cannot find ${req.method} endpoint for ${req.path}`,
+//       statusCode: 404,
+//     }).payload
+// );
 module.exports = app;
